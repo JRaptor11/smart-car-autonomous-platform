@@ -65,3 +65,21 @@ install/
 
 # Misc
 *.bak
+# CMake generated files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+compile_commands.json
+
+# Runtime-generated outputs
+*.mp4
+*.avi
+
+# NVIDIA cache
+.nv/
+
+# Temporary directories
+tmp/
+temp/
+

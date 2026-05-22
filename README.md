@@ -1,208 +1,275 @@
-# Smart Car Autonomous Platform
+# Autonomous Vehicle Capstone
 
-Embedded autonomous vehicle platform integrating GPU-accelerated perception, real-time control, CAN communication, and hardware/software co-design on NVIDIA Jetson.
-
----
-
-## Runtime Perception Pipeline
-
-![Runtime Overlay](media/images/lane_detection_runtime_overlay.png)
-
-Real-time lane detection and centerline generation running on the deployed C++ TensorRT inference runtime.
-
----
-
-## Embedded Hardware Integration
-
-![Hardware Integration](hardware/integration/images/vehicle_electronics_integration.jpg)
-
-Integrated embedded compute, power distribution, CAN communication, and actuator control architecture mounted directly on the autonomous vehicle platform.
+Real-time autonomous RC vehicle platform designed for embedded lane following using GPU-accelerated perception, embedded control systems, and hardware-software integration.
 
 ---
 
 ## Overview
 
-This project is a 1/10-scale autonomous vehicle platform developed to investigate real-time embedded autonomy, computer vision, and hardware/software integration in a constrained robotic system.
+This project focused on designing and integrating a fully embedded autonomous vehicle platform capable of real-time lane following using onboard perception and control systems. The platform combines GPU-accelerated vision inference, embedded compute hardware, low-level actuator control, and custom electrical integration into a complete autonomy pipeline running directly on the vehicle.
 
-The platform combines GPU-accelerated lane detection, closed-loop vehicle control, embedded communication, and low-latency system optimization to autonomously navigate outdoor driving environments using a single forward-facing camera.
+The system was developed on a 1/10-scale RC platform and uses a forward-facing camera for lane perception, NVIDIA Jetson embedded compute hardware for onboard inference and control processing, and an Arduino-based actuator interface for steering and throttle control.
 
-The system was developed using NVIDIA Jetson embedded computing hardware alongside a dedicated microcontroller-based actuator control system connected through CAN communication.
-
----
-
-## Key Features
-
-- Real-time autonomous lane following
-- TensorRT-accelerated UNet inference
-- CUDA-enabled GPU execution on NVIDIA Jetson
-- Pure Pursuit steering controller
-- CAN-based distributed communication architecture
-- Embedded Jetson + Arduino system integration
-- Custom PCB integration and power distribution
-- Low-latency C++ deployment runtime
-- Outdoor autonomous testing and validation
+The project emphasized real-world embedded systems engineering challenges including low-latency inference, power distribution, communication reliability, runtime optimization, subsystem integration, and autonomous operation under changing outdoor conditions.
 
 ---
 
 ## System Architecture
 
-![Functional Decomposition Level 1](docs/architecture/functional_decomposition_level1.png)
+### Perception Pipeline
+- Forward-facing monocular camera used for lane detection
+- UNet-based semantic segmentation model for lane perception
+- TensorRT and CUDA acceleration for embedded GPU inference
+- Real-time image preprocessing and inference pipeline running onboard
 
-High-level embedded systems architecture showing perception, planning, control, actuation, power distribution, and diagnostics integration across the autonomous vehicle platform.
+### Embedded Compute & Control
+- NVIDIA Jetson embedded compute platform used for onboard autonomy stack
+- C++ runtime implementation for lower-latency execution
+- Pure Pursuit controller for lane-following trajectory tracking
+- Real-time steering and throttle command generation
 
-```text
-Camera
-   ↓
-Jetson Runtime (TensorRT + CUDA)
-   ↓
-Lane Detection + Centerline Extraction
-   ↓
-Pure Pursuit Controller
-   ↓
-CAN Communication
-   ↓
-Arduino Actuation Controller
-   ↓
-PWM Steering / Throttle Control
-```
-
----
-
-## Perception & Runtime Pipeline
-
-![Functional Decomposition Level 2](docs/architecture/functional_decomposition_level2.png)
-
-Detailed perception and runtime processing pipeline including image acquisition, UNet inference, lane extraction, centerline estimation, and downstream control integration.
-
-```text
-Camera Input
-      ↓
-Frame Preprocessing
-      ↓
-TensorRT UNet Inference
-      ↓
-Lane Mask Generation
-      ↓
-Boundary Extraction
-      ↓
-Centerline / Target Point Calculation
-      ↓
-Vehicle Control Interface
-```
+### Hardware Integration
+- Arduino-based actuator control interface
+- CAN communication subsystem integration
+- Custom PCB-based grounding and power distribution integration
+- Custom CAD-designed and 3D-printed mounting hardware
+- Embedded wiring and subsystem integration directly onboard vehicle
 
 ---
 
-## Embedded Hardware Platform
+## Vehicle Platform
 
-The vehicle platform integrates embedded compute, power regulation, communication, sensing, and actuation subsystems into a compact autonomous robotics platform.
+<p align="center">
+  <img src="media/images/autonomous_vehicle_platform.jpeg" width="750"/>
+</p>
 
-### Hardware Components
+The final vehicle platform integrated embedded compute, perception, communication, and control hardware directly onto the RC chassis while maintaining real-time autonomous operation capability.
 
+---
+
+## Embedded Hardware Integration
+
+### Electronics Integration
+
+<p align="center">
+  <img src="hardware/integration/images/vehicle_electronics_integration.jpeg" width="750"/>
+</p>
+
+The onboard electronics platform integrated:
 - NVIDIA Jetson embedded compute platform
-- Arduino actuator controller
-- MCP2515 CAN transceivers
-- Front-facing camera
-- Electronic speed controller (ESC)
-- Servo steering system
-- Custom PCB integration
-- Dual battery power architecture
-- 3D printed mounting hardware
+- Arduino actuator interface
+- CAN communication hardware
+- Power regulation hardware
+- Custom grounding distribution
+- Embedded subsystem wiring
 
-### Hardware Integration Diagram
+### Electronics Close-Up
 
-![Hardware Integration Diagram](docs/architecture/hardware_integration_diagram.png)
+<p align="center">
+  <img src="hardware/integration/images/vehicle_electronics_closeup.jpeg" width="650"/>
+</p>
 
-Embedded system power distribution and communication architecture integrating Jetson compute, CAN communication, power regulation, and actuator control subsystems.
+### Camera Mount Integration
+
+<p align="center">
+  <img src="hardware/integration/images/camera_mount_closeup.jpeg" width="500"/>
+</p>
+
+A custom CAD-designed and 3D-printed mounting solution was developed to securely position the forward-facing perception camera during vehicle operation.
 
 ---
 
-## Software Stack
+## PCB & CAD Assets
 
-### Runtime
-- C++
-- CUDA
-- TensorRT
-- OpenCV
-- Embedded Linux
+### Custom Ground Distribution PCB
 
-### Development & Training
-- Python
-- PyTorch
-- UNet segmentation pipeline
+Custom PCB integration was developed to improve shared grounding reliability across onboard embedded subsystems.
+
+<p align="center">
+  <img src="hardware/pcb/images/can_ground_distribution_pcb_layout.png" width="500"/>
+</p>
+
+<p align="center">
+  <img src="hardware/pcb/images/can_ground_distribution_pcb_fabricated.jpeg" width="500"/>
+</p>
+
+### Camera Mount CAD
+
+<p align="center">
+  <img src="hardware/cad/images/camera_mount_cad_render.png" width="500"/>
+</p>
+
+Custom CAD-designed mounting hardware developed to securely integrate the forward-facing perception camera onto the vehicle chassis while maintaining stable sensor positioning during autonomous operation.
+
+### Installed Camera Mount
+
+<p align="center">
+</p>
 
 ---
 
 ## Demonstration
 
-### Autonomous Driving Highlight
-
-[Autonomous Driving Highlight](media/demos/autonomous_lane_following_highlight.mov)
-
-Short outdoor autonomous driving demonstration showing real-time lane following using the deployed embedded perception and control pipeline.
-
-### Full Validation Run
-
-The complete autonomous lap validation video is available in the repository Releases section.
+The vehicle successfully demonstrated real-time autonomous lane following using fully onboard embedded perception and control systems during outdoor testing and public project demonstrations.
 
 ---
 
-## Real-Time Optimization
+## Validation & Testing
 
-The deployed runtime was rewritten from earlier Python implementations into a performance-focused C++ inference pipeline to reduce latency and improve real-time execution stability on embedded Jetson hardware.
+The autonomous vehicle platform underwent both simulation-based controller validation and real-world outdoor testing to evaluate perception reliability, path tracking performance, and embedded runtime behavior.
 
-Optimization techniques included:
-- TensorRT engine deployment
-- CUDA GPU acceleration
-- Streamlined runtime execution paths
-- Lightweight deployment-oriented architecture
-- Reduced processing overhead for real-time control operation
+### Runtime Perception Validation
+
+<p align="center">
+  <img src="media/images/lane_detection_runtime_overlay.png" width="750"/>
+</p>
+
+Real-time runtime overlay showing:
+- lane segmentation output
+- lane boundary extraction
+- centerline estimation
+- target point generation
+- embedded runtime visualization during autonomous operation
+
+The deployed runtime executed directly onboard NVIDIA Jetson embedded hardware using TensorRT-accelerated UNet inference.
 
 ---
 
-## Results
+### Controller Path Tracking Validation
 
-- Successful autonomous outdoor lane following
-- Real-time embedded GPU inference execution
-- End-to-end low-latency perception pipeline
-- Full hardware/software integration on mobile vehicle platform
-- Real-world testing and validation on outdoor driving paths
+<p align="center">
+  <img src="docs/testing/images/pure_pursuit_path_tracking_validation.png" width="850"/>
+</p>
+
+Simulation-based validation was used to evaluate Pure Pursuit controller path tracking performance across dynamically varying trajectories and changing curvature conditions.
+
+The validation process compared:
+- reference trajectory generation
+- vehicle tracking response
+- target point selection behavior
+- controller stability across continuous path updates
+
+---
+
+### Additional Validation Testing
+
+<p align="center">
+  <img src="docs/testing/images/rectangular_path_validation.png" width="700"/>
+</p>
+
+Additional closed-loop controller validation was performed on simplified trajectories to evaluate:
+- cornering behavior
+- steady-state tracking performance
+- path convergence behavior
+- controller tuning response
+
+---
+
+### Outdoor Testing & Iteration
+
+The vehicle underwent repeated outdoor testing across varying environmental conditions including:
+- changing lighting conditions
+- partial lane visibility
+- shadows and glare
+- varying path curvature
+
+Runtime tuning, controller refinement, and perception improvements were iteratively validated through repeated autonomous test runs performed directly on the embedded platform.
+
+---
+
+## Design Challenges & Engineering Decisions
+
+Developing a fully embedded autonomous vehicle platform introduced several real-world system integration and runtime challenges across perception, compute, communication, and power subsystems.
+
+### Embedded Runtime Optimization
+
+Early runtime implementations were developed in Python during initial perception pipeline validation. As system integration complexity increased, the runtime was rewritten into a lower-latency C++ deployment architecture using TensorRT and CUDA acceleration to improve inference throughput and real-time execution stability on embedded Jetson hardware.
+
+### Embedded Power & Ground Integration
+
+Integrating multiple embedded compute and actuator subsystems introduced grounding and power distribution challenges during early system integration. Shared grounding architecture and custom PCB integration were implemented to improve communication reliability and subsystem stability across the embedded platform.
+
+### Outdoor Perception Constraints
+
+Outdoor testing introduced difficult lighting conditions including shadows, glare, and partial lane visibility. Runtime perception tuning and controller integration were iteratively refined to improve autonomous lane-following robustness under varying environmental conditions.
+
+### Mechanical & Sensor Integration
+
+Custom CAD-designed and 3D-printed mounting hardware was developed to securely integrate the forward-facing perception camera and embedded electronics platform onto the vehicle chassis while maintaining stable sensor positioning during outdoor operation.
+
+---
+
+## Technologies Used
+
+### Languages
+- C++
+- Python
+
+### Embedded & Compute Platforms
+- NVIDIA Jetson
+- Arduino
+
+### GPU & AI Frameworks
+- TensorRT
+- CUDA
+- UNet
+
+### Electrical & Hardware
+- CAN Bus
+- PCB Design
+- Embedded Power Distribution
+- Hardware Integration
+
+### CAD & Mechanical Design
+- Blender
+- 3D Printing
+
+---
+
+## Key Engineering Focus Areas
+
+- Embedded Systems Integration
+- Real-Time Systems
+- GPU-Accelerated Embedded Inference
+- Autonomous Vehicle Control
+- Hardware-Software Integration
+- Embedded Runtime Optimization
+- Electrical Integration
+- Communication Reliability
+- Embedded AI Deployment
+- Autonomous Navigation
 
 ---
 
 ## Repository Structure
 
 ```text
-docs/          -> Technical documentation, architecture diagrams, and reports
-hardware/      -> CAD, PCB, power system, and integration assets
-media/         -> Images, demonstrations, and visual assets
-software/      -> Jetson autonomy software stack
+hardware/
+├── cad/
+│   └── images/
+├── integration/
+│   └── images/
+├── pcb/
+│   └── images/
+
+software/
+├── perception/
+├── control/
+├── runtime/
+└── utilities/
+
+docs/
+└── testing/
+    └── images/
+
+media/
+└── images/
 ```
 
 ---
 
-## Documentation
+## Author
 
-### Reports
-- Final Report: `docs/reports/`
-- Presentations: `docs/presentations/`
-
-### Runtime
-- C++ Deployment Runtime: `software/cpp_runtime/`
-
-### Architecture
-- Functional decomposition diagrams
-- Runtime processing pipeline
-- Hardware integration architecture
-
----
-
-## Future Improvements
-
-- Additional sensor fusion integration
-- Improved lane robustness under difficult lighting conditions
-- Dynamic speed adaptation
-- Expanded telemetry and diagnostics
-- Enhanced localization capabilities
-- Additional autonomous driving behaviors
-- Improved embedded hardware modularization
-- Further PCB integration and subsystem consolidation
+Joshua Oliveira  
+Computer Engineering  
+Loyola Marymount University

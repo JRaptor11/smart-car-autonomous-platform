@@ -107,6 +107,10 @@ Custom CAD-designed mounting hardware developed to securely integrate the forwar
 
 The vehicle successfully demonstrated real-time autonomous lane following using fully onboard embedded perception and control systems during outdoor testing and public project demonstrations.
 
+### Full Validation Run
+
+The complete autonomous validation run is available in the repository Releases section.
+
 ---
 
 ## Validation & Testing
@@ -150,8 +154,6 @@ The dataset preparation pipeline included:
 
 The trained UNet segmentation model was later deployed onboard the NVIDIA Jetson platform using TensorRT-accelerated runtime inference.
 
----
-
 ### Controller Path Tracking Validation
 
 <p align="center">
@@ -166,8 +168,6 @@ The validation process compared:
 - target point selection behavior
 - controller stability across continuous path updates
 
----
-
 ### Additional Validation Testing
 
 <p align="center">
@@ -179,8 +179,6 @@ Additional closed-loop controller validation was performed on simplified traject
 - steady-state tracking performance
 - path convergence behavior
 - controller tuning response
-
----
 
 ### Outdoor Testing & Iteration
 
@@ -225,8 +223,6 @@ Custom CAD-designed and 3D-printed mounting hardware was developed to securely i
 </p>
 
 A subsystem-level work breakdown structure was developed to organize hardware integration, embedded communication, PCB development, mechanical design, and vehicle wiring integration tasks across the autonomous platform.
-
----
 
 ### Embedded Power & Hardware Architecture
 

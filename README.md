@@ -101,11 +101,6 @@ Custom PCB integration was developed to improve shared grounding reliability acr
 
 Custom CAD-designed mounting hardware developed to securely integrate the forward-facing perception camera onto the vehicle chassis while maintaining stable sensor positioning during autonomous operation.
 
-### Installed Camera Mount
-
-<p align="center">
-</p>
-
 ---
 
 ## Demonstration
@@ -121,7 +116,7 @@ The autonomous vehicle platform underwent both simulation-based controller valid
 ### Runtime Perception Validation
 
 <p align="center">
-  <img src="media/images/lane_detection_runtime_overlay.png" width="750"/>
+  <img src="media/images/runtime_perception_overlay.png" width="750"/>
 </p>
 
 Real-time runtime overlay showing:
@@ -132,6 +127,28 @@ Real-time runtime overlay showing:
 - embedded runtime visualization during autonomous operation
 
 The deployed runtime executed directly onboard NVIDIA Jetson embedded hardware using TensorRT-accelerated UNet inference.
+
+---
+
+## Dataset Annotation & Training Pipeline
+
+Lane segmentation training data was manually annotated using polygon-based semantic labeling workflows to generate segmentation masks for UNet training.
+
+### Label Annotation Workflow
+
+<p align="center">
+  <img src="docs/training/images/labelme_lane_annotation.png" width="750"/>
+</p>
+
+Training images were labeled using polygon-based lane annotations to generate semantic segmentation masks for embedded lane perception model training.
+
+The dataset preparation pipeline included:
+- polygon-based lane annotation
+- semantic mask generation
+- training dataset preprocessing
+- embedded inference deployment preparation
+
+The trained UNet segmentation model was later deployed onboard the NVIDIA Jetson platform using TensorRT-accelerated runtime inference.
 
 ---
 
@@ -199,6 +216,52 @@ Custom CAD-designed and 3D-printed mounting hardware was developed to securely i
 
 ---
 
+## System Architecture & Planning
+
+### Work Breakdown Structure (WBS)
+
+<p align="center">
+  <img src="docs/architecture/images/work_breakdown_structure.png" width="750"/>
+</p>
+
+A subsystem-level work breakdown structure was developed to organize hardware integration, embedded communication, PCB development, mechanical design, and vehicle wiring integration tasks across the autonomous platform.
+
+---
+
+### Embedded Power & Hardware Architecture
+
+<p align="center">
+  <img src="docs/architecture/hardware_integration_diagram.png" width="750"/>
+</p>
+
+The embedded hardware architecture integrated:
+- dual battery power distribution
+- shared grounding strategy
+- Jetson embedded compute hardware
+- Arduino actuator control
+- CAN communication hardware
+- camera perception input
+- embedded actuator interfaces
+
+The architecture was iteratively refined during integration to improve subsystem stability, grounding reliability, and embedded runtime robustness across onboard compute and actuator systems.
+
+---
+
+### Early System Concept Decomposition
+
+<p align="center">
+  <img src="docs/architecture/images/system_concept_decomposition.png" width="750"/>
+</p>
+
+Early-stage system decomposition and concept exploration were used to evaluate:
+- embedded compute platform selection
+- sensor integration approaches
+- actuator control strategies
+- communication architecture
+- scalability and testing constraints
+
+---
+
 ## Technologies Used
 
 ### Languages
@@ -244,26 +307,33 @@ Custom CAD-designed and 3D-printed mounting hardware was developed to securely i
 ## Repository Structure
 
 ```text
+docs/
+├── architecture/
+│   └── images/
+├── presentations/
+├── reports/
+├── testing/
+│   └── images/
+└── training/
+    └── images/
+
 hardware/
 ├── cad/
 │   └── images/
 ├── integration/
 │   └── images/
-├── pcb/
-│   └── images/
-
-software/
-├── perception/
-├── control/
-├── runtime/
-└── utilities/
-
-docs/
-└── testing/
+└── pcb/
     └── images/
 
 media/
+├── demos/
 └── images/
+
+software/
+└── cpp_runtime/
+    ├── src/
+    ├── CMakeLists.txt
+    └── README.md
 ```
 
 ---

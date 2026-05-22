@@ -241,8 +241,6 @@ The embedded hardware architecture integrated:
 
 The architecture was iteratively refined during integration to improve subsystem stability, grounding reliability, and embedded runtime robustness across onboard compute and actuator systems.
 
----
-
 ### Early System Concept Decomposition
 
 <p align="center">

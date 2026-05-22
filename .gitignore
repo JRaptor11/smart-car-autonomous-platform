@@ -83,3 +83,4 @@ compile_commands.json
 tmp/
 temp/
 
+!media/demos/autonomous_vehicle_validation_run.mp4

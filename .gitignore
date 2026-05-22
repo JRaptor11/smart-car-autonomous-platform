@@ -1,0 +1,67 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# VSCode
+.vscode/
+
+# JetBrains
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# OneDrive
+*.tmp
+~$*
+
+# Logs
+*.log
+
+# Build artifacts
+build/
+dist/
+
+# CUDA / TensorRT
+*.engine
+*.plan
+
+# Compiled binaries
+*.o
+*.out
+*.exe
+
+# Arduino
+*.hex
+
+# Dataset / large generated files
+datasets/
+data/raw/
+
+# Python environment files
+.python-version
+
+# Secrets
+.env
+.env.*
+secrets.json
+config_private.py
+
+# ROS / catkin (if ever added later)
+devel/
+install/
+
+# Misc
+*.bak

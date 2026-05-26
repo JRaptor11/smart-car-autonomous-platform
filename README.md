@@ -124,7 +124,7 @@ The autonomous vehicle platform underwent both simulation-based controller valid
 ### Real-World Autonomous Validation
 
 <p align="center">
-  <img src="media/images/autonomous-lane-following-validation.jpg" width="750"/>
+  <img src="media/images/autonomous_lane_following_validation.jpg" width="750"/>
 </p>
 
 Vehicle performing fully onboard autonomous lane following during outdoor validation testing.

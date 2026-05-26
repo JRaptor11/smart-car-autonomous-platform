@@ -17,23 +17,26 @@ The project emphasized real-world embedded systems engineering challenges includ
 ## System Architecture
 
 ### Perception Pipeline
-- Forward-facing monocular camera used for lane detection
-- UNet-based semantic segmentation model for lane perception
-- TensorRT and CUDA acceleration for embedded GPU inference
-- Real-time image preprocessing and inference pipeline running onboard
+
+* Forward-facing monocular camera used for lane detection
+* UNet-based semantic segmentation model for lane perception
+* TensorRT and CUDA acceleration for embedded GPU inference
+* Real-time image preprocessing and inference pipeline running onboard
 
 ### Embedded Compute & Control
-- NVIDIA Jetson embedded compute platform used for onboard autonomy stack
-- C++ runtime implementation for lower-latency execution
-- Pure Pursuit controller for lane-following trajectory tracking
-- Real-time steering and throttle command generation
+
+* NVIDIA Jetson embedded compute platform used for onboard autonomy stack
+* C++ runtime implementation for lower-latency execution
+* Pure Pursuit controller for lane-following trajectory tracking
+* Real-time steering and throttle command generation
 
 ### Hardware Integration
-- Arduino-based actuator control interface
-- CAN communication subsystem integration
-- Custom PCB-based grounding and power distribution integration
-- Custom CAD-designed and 3D-printed mounting hardware
-- Embedded wiring and subsystem integration directly onboard vehicle
+
+* Arduino-based actuator control interface
+* CAN communication subsystem integration
+* Custom PCB-based grounding and power distribution integration
+* Custom CAD-designed and 3D-printed mounting hardware
+* Embedded wiring and subsystem integration directly onboard vehicle
 
 ---
 
@@ -56,12 +59,13 @@ The final vehicle platform integrated embedded compute, perception, communicatio
 </p>
 
 The onboard electronics platform integrated:
-- NVIDIA Jetson embedded compute platform
-- Arduino actuator interface
-- CAN communication hardware
-- Power regulation hardware
-- Custom grounding distribution
-- Embedded subsystem wiring
+
+* NVIDIA Jetson embedded compute platform
+* Arduino actuator interface
+* CAN communication hardware
+* Power regulation hardware
+* Custom grounding distribution
+* Embedded subsystem wiring
 
 ### Electronics Close-Up
 
@@ -117,6 +121,24 @@ The complete autonomous validation run is available in the repository Releases s
 
 The autonomous vehicle platform underwent both simulation-based controller validation and real-world outdoor testing to evaluate perception reliability, path tracking performance, and embedded runtime behavior.
 
+### Real-World Autonomous Validation
+
+<p align="center">
+  <img src="media/images/autonomous-lane-following-validation.jpg" width="750"/>
+</p>
+
+Vehicle performing fully onboard autonomous lane following during outdoor validation testing.
+
+Testing evaluated:
+
+* real-time perception performance
+* lane tracking behavior
+* steering response stability
+* end-to-end system integration
+* runtime behavior under changing outdoor conditions
+
+The complete perception, control, and actuator pipeline executed directly onboard the vehicle during autonomous operation without external processing.
+
 ### Runtime Perception Validation
 
 <p align="center">
@@ -124,13 +146,53 @@ The autonomous vehicle platform underwent both simulation-based controller valid
 </p>
 
 Real-time runtime overlay showing:
-- lane segmentation output
-- lane boundary extraction
-- centerline estimation
-- target point generation
-- embedded runtime visualization during autonomous operation
+
+* lane segmentation output
+* lane boundary extraction
+* centerline estimation
+* target point generation
+* embedded runtime visualization during autonomous operation
 
 The deployed runtime executed directly onboard NVIDIA Jetson embedded hardware using TensorRT-accelerated UNet inference.
+
+### Controller Path Tracking Validation
+
+<p align="center">
+  <img src="docs/testing/images/pure_pursuit_path_tracking_validation.png" width="850"/>
+</p>
+
+Simulation-based validation was used to evaluate Pure Pursuit controller path tracking performance across dynamically varying trajectories and changing curvature conditions.
+
+The validation process compared:
+
+* reference trajectory generation
+* vehicle tracking response
+* target point selection behavior
+* controller stability across continuous path updates
+
+### Additional Validation Testing
+
+<p align="center">
+  <img src="docs/testing/images/rectangular_path_validation.png" width="700"/>
+</p>
+
+Additional closed-loop controller validation was performed on simplified trajectories to evaluate:
+
+* cornering behavior
+* steady-state tracking performance
+* path convergence behavior
+* controller tuning response
+
+### Outdoor Testing & Iteration
+
+The vehicle underwent repeated outdoor testing across varying environmental conditions including:
+
+* changing lighting conditions
+* partial lane visibility
+* shadows and glare
+* varying path curvature
+
+Runtime tuning, controller refinement, and perception improvements were iteratively validated through repeated autonomous test runs performed directly on the embedded platform.
 
 ---
 
@@ -147,48 +209,13 @@ Lane segmentation training data was manually annotated using polygon-based seman
 Training images were labeled using polygon-based lane annotations to generate semantic segmentation masks for embedded lane perception model training.
 
 The dataset preparation pipeline included:
-- polygon-based lane annotation
-- semantic mask generation
-- training dataset preprocessing
-- embedded inference deployment preparation
+
+* polygon-based lane annotation
+* semantic mask generation
+* training dataset preprocessing
+* embedded inference deployment preparation
 
 The trained UNet segmentation model was later deployed onboard the NVIDIA Jetson platform using TensorRT-accelerated runtime inference.
-
-### Controller Path Tracking Validation
-
-<p align="center">
-  <img src="docs/testing/images/pure_pursuit_path_tracking_validation.png" width="850"/>
-</p>
-
-Simulation-based validation was used to evaluate Pure Pursuit controller path tracking performance across dynamically varying trajectories and changing curvature conditions.
-
-The validation process compared:
-- reference trajectory generation
-- vehicle tracking response
-- target point selection behavior
-- controller stability across continuous path updates
-
-### Additional Validation Testing
-
-<p align="center">
-  <img src="docs/testing/images/rectangular_path_validation.png" width="700"/>
-</p>
-
-Additional closed-loop controller validation was performed on simplified trajectories to evaluate:
-- cornering behavior
-- steady-state tracking performance
-- path convergence behavior
-- controller tuning response
-
-### Outdoor Testing & Iteration
-
-The vehicle underwent repeated outdoor testing across varying environmental conditions including:
-- changing lighting conditions
-- partial lane visibility
-- shadows and glare
-- varying path curvature
-
-Runtime tuning, controller refinement, and perception improvements were iteratively validated through repeated autonomous test runs performed directly on the embedded platform.
 
 ---
 
@@ -231,13 +258,14 @@ A subsystem-level work breakdown structure was developed to organize hardware in
 </p>
 
 The embedded hardware architecture integrated:
-- dual battery power distribution
-- shared grounding strategy
-- Jetson embedded compute hardware
-- Arduino actuator control
-- CAN communication hardware
-- camera perception input
-- embedded actuator interfaces
+
+* dual battery power distribution
+* shared grounding strategy
+* Jetson embedded compute hardware
+* Arduino actuator control
+* CAN communication hardware
+* camera perception input
+* embedded actuator interfaces
 
 The architecture was iteratively refined during integration to improve subsystem stability, grounding reliability, and embedded runtime robustness across onboard compute and actuator systems.
 
@@ -248,53 +276,59 @@ The architecture was iteratively refined during integration to improve subsystem
 </p>
 
 Early-stage system decomposition and concept exploration were used to evaluate:
-- embedded compute platform selection
-- sensor integration approaches
-- actuator control strategies
-- communication architecture
-- scalability and testing constraints
+
+* embedded compute platform selection
+* sensor integration approaches
+* actuator control strategies
+* communication architecture
+* scalability and testing constraints
 
 ---
 
 ## Technologies Used
 
 ### Languages
-- C++
-- Python
+
+* C++
+* Python
 
 ### Embedded & Compute Platforms
-- NVIDIA Jetson
-- Arduino
+
+* NVIDIA Jetson
+* Arduino
 
 ### GPU & AI Frameworks
-- TensorRT
-- CUDA
-- UNet
+
+* TensorRT
+* CUDA
+* UNet
 
 ### Electrical & Hardware
-- CAN Bus
-- PCB Design
-- Embedded Power Distribution
-- Hardware Integration
+
+* CAN Bus
+* PCB Design
+* Embedded Power Distribution
+* Hardware Integration
 
 ### CAD & Mechanical Design
-- Blender
-- 3D Printing
+
+* Blender
+* 3D Printing
 
 ---
 
 ## Key Engineering Focus Areas
 
-- Embedded Systems Integration
-- Real-Time Systems
-- GPU-Accelerated Embedded Inference
-- Autonomous Vehicle Control
-- Hardware-Software Integration
-- Embedded Runtime Optimization
-- Electrical Integration
-- Communication Reliability
-- Embedded AI Deployment
-- Autonomous Navigation
+* Embedded Systems Integration
+* Real-Time Systems
+* GPU-Accelerated Embedded Inference
+* Autonomous Vehicle Control
+* Hardware-Software Integration
+* Embedded Runtime Optimization
+* Electrical Integration
+* Communication Reliability
+* Embedded AI Deployment
+* Autonomous Navigation
 
 ---
 
@@ -334,6 +368,6 @@ software/
 
 ## Author
 
-Joshua Oliveira  
-Computer Engineering  
+Joshua Oliveira
+Computer Engineering
 Loyola Marymount University
